@@ -8,13 +8,19 @@
   html {
     @apply antialiased text-surface-800 dark:text-surface-100;
   }
-  
-  body {
-    @apply bg-surface-50 dark:bg-surface-900 min-h-screen transition-colors duration-300;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-semibold;
+  /* Input field styles */
+   .input-field {
+     @apply w-full rounded-lg border border-surface-300 dark:border-surface-600 bg-white dark:bg-surface-800 px-4 py-2 text-surface-800 dark:text-surface-100 focus:border-primary dark:focus:border-primary-light focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-primary-light;
+   }
+ 
+   /* Button styles */
+   .btn {
+     @apply rounded-lg font-medium transition-colors duration-300 flex items-center justify-center px-4 py-2;
+   }
+ 
+   .btn-primary {
+     @apply bg-primary hover:bg-primary-dark text-white;
+   }
   }
   
   h1 {
@@ -30,6 +36,20 @@
   }
   
   h4 {
+
+  /* Animation classes */
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
     @apply text-lg md:text-xl;
   }
 }
