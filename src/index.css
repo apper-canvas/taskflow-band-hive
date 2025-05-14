@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'react-toastify/dist/ReactToastify.css';
-
 @layer base {
   html {
     @apply antialiased text-surface-800 dark:text-surface-100;
@@ -75,12 +73,12 @@
     @apply bg-white/70 dark:bg-surface-800/70 backdrop-blur-md;
   }
   
-  .animate-spin {
-    animation: spin 1s linear infinite;
+  .animate-custom-spin {
+    animation: custom-spin 1s linear infinite;
   }
   
-  @keyframes spin {
-    from {
+  @keyframes custom-spin {
+    0% {
       transform: rotate(0deg);
     }
     to {
