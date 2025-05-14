@@ -144,50 +144,47 @@ function App() {
   return (
     <AuthContext.Provider value={authMethods}>
       <div className="min-h-screen">
-      <motion.button
-        onClick={toggleTheme}
-        className="fixed right-4 top-4 z-50 p-2 rounded-full bg-surface-200 dark:bg-surface-700 
-                  shadow-soft hover:shadow-md transition-all duration-300"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-      >
-        {isDarkMode ? (
-          <SunIcon className="w-5 h-5 text-yellow-400" />
-        ) : (
-          <MoonIcon className="w-5 h-5 text-surface-600" />
-        )}
-      </motion.button>
+        <motion.button
+          onClick={toggleTheme}
+          className="fixed right-4 top-4 z-50 p-2 rounded-full bg-surface-200 dark:bg-surface-700 
+                    shadow-soft hover:shadow-md transition-all duration-300"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {isDarkMode ? (
+            <SunIcon className="w-5 h-5 text-yellow-400" />
+          ) : (
+            <MoonIcon className="w-5 h-5 text-surface-600" />
+          )}
+        </motion.button>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/callback" element={<Callback />} />
+          <Route path="/error" element={<ErrorPage />} />
+          <Route path="/" element={isAuthenticated ? <Dashboard /> : <Login />} />
+          <Route path="*" element={isAuthenticated ? <NotFound /> : <Login />} />
+        </Routes>
 
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme={isDarkMode ? "dark" : "light"}
-        toastClassName="rounded-xl shadow-soft"
-      />
-    </div>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme={isDarkMode ? "dark" : "light"}
+          toastClassName="rounded-xl shadow-soft"
+        />
+      </div>
+      <div id="authentication" className="hidden"></div>
+    </AuthContext.Provider>
   );
 }
 
 export default App;
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/callback" element={<Callback />} />
-        <Route path="/error" element={<ErrorPage />} />
-        <Route path="/" element={isAuthenticated ? <Dashboard /> : <Login />} />
-        <Route path="*" element={isAuthenticated ? <NotFound /> : <Login />} />
-      </div>
-      <div id="authentication" className="hidden"></div>
-    </AuthContext.Provider>
